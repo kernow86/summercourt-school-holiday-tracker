@@ -9,14 +9,14 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f0f4f8;
+      background: #eef0f8;
       color: #1a202c;
       min-height: 100vh;
     }
 
     /* ── Header ── */
     header {
-      background: #1e3a5f;
+      background: #4455B7;
       color: white;
       padding: 1.5rem 1.25rem 1.25rem;
       text-align: center;
@@ -27,12 +27,33 @@
       display: inline-block;
       margin-top: 0.75rem;
       padding: 0.3rem 0.9rem;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.18);
       border-radius: 999px;
       font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.03em;
     }
+
+    /* ── Status messages ── */
+    .status-msg {
+      text-align: center;
+      padding: 2rem 1.25rem;
+      font-size: 0.88rem;
+      color: #607B88;
+    }
+    .status-msg.error { color: #c53030; }
+    .spinner {
+      display: inline-block;
+      width: 1.2rem;
+      height: 1.2rem;
+      border: 2px solid #dde0f5;
+      border-top-color: #4455B7;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 0.4rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ── Countdown section ── */
     .section-title {
@@ -40,7 +61,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #718096;
+      color: #607B88;
       margin-bottom: 0.75rem;
     }
 
@@ -55,15 +76,16 @@
       background: white;
       border-radius: 12px;
       padding: 1.1rem 1.25rem;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-      border-left: 4px solid #ccc;
+      box-shadow: 0 1px 4px rgba(68,85,183,0.1);
+      border-left: 4px solid #D9D9D9;
       position: relative;
       overflow: hidden;
     }
-    .countdown-card.holiday  { border-left-color: #38a169; }
-    .countdown-card.inset    { border-left-color: #dd6b20; }
-    .countdown-card.bank-holiday { border-left-color: #3182ce; }
-    .countdown-card.ongoing  { border-left-color: #805ad5; }
+    .countdown-card.holiday      { border-left-color: #518FF5; }
+    .countdown-card.inset        { border-left-color: #607B88; }
+    .countdown-card.bank-holiday { border-left-color: #4455B7; }
+    .countdown-card.closure      { border-left-color: #2299dd; }
+    .countdown-card.ongoing      { border-left-color: #2299dd; }
 
     .card-label {
       font-size: 0.7rem;
@@ -72,25 +94,27 @@
       text-transform: uppercase;
       margin-bottom: 0.35rem;
     }
-    .holiday  .card-label { color: #276749; }
-    .inset    .card-label { color: #9c4221; }
-    .bank-holiday .card-label { color: #2b6cb0; }
-    .ongoing  .card-label { color: #553c9a; }
+    .holiday      .card-label { color: #3a6bb5; }
+    .inset        .card-label { color: #4a5f6b; }
+    .bank-holiday .card-label { color: #4455B7; }
+    .closure      .card-label { color: #1a7aaa; }
+    .ongoing      .card-label { color: #1a7aaa; }
 
     .card-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; line-height: 1.3; }
-    .card-date { font-size: 0.78rem; color: #718096; margin-bottom: 0.6rem; }
+    .card-date { font-size: 0.78rem; color: #607B88; margin-bottom: 0.6rem; }
 
     .card-countdown {
       font-size: 2rem;
       font-weight: 800;
       line-height: 1;
     }
-    .holiday  .card-countdown { color: #38a169; }
-    .inset    .card-countdown { color: #dd6b20; }
-    .bank-holiday .card-countdown { color: #3182ce; }
-    .ongoing  .card-countdown { color: #805ad5; }
+    .holiday      .card-countdown { color: #518FF5; }
+    .inset        .card-countdown { color: #607B88; }
+    .bank-holiday .card-countdown { color: #4455B7; }
+    .closure      .card-countdown { color: #2299dd; }
+    .ongoing      .card-countdown { color: #2299dd; }
 
-    .card-unit { font-size: 0.75rem; color: #718096; font-weight: 500; }
+    .card-unit { font-size: 0.75rem; color: #607B88; font-weight: 500; }
 
     /* ── Full list ── */
     .list-section {
@@ -103,9 +127,9 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #4a5568;
+      color: #4455B7;
       padding: 0.4rem 0.6rem;
-      background: #e2e8f0;
+      background: #dde0f5;
       border-radius: 6px;
       margin-bottom: 0.5rem;
     }
@@ -118,7 +142,7 @@
       border-radius: 8px;
       padding: 0.65rem 0.9rem;
       margin-bottom: 0.35rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      box-shadow: 0 1px 3px rgba(68,85,183,0.07);
       transition: opacity 0.2s;
     }
     .event-row.past { opacity: 0.4; }
@@ -129,14 +153,14 @@
       border-radius: 50%;
       flex-shrink: 0;
     }
-    .holiday       .event-dot { background: #38a169; }
-    .inset         .event-dot { background: #dd6b20; }
-    .bank-holiday  .event-dot { background: #3182ce; }
-    .closure       .event-dot { background: #e53e3e; }
+    .holiday       .event-dot { background: #518FF5; }
+    .inset         .event-dot { background: #607B88; }
+    .bank-holiday  .event-dot { background: #4455B7; }
+    .closure       .event-dot { background: #2299dd; }
 
     .event-info { flex: 1; min-width: 0; }
     .event-name { font-size: 0.88rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .event-dates { font-size: 0.75rem; color: #718096; margin-top: 0.1rem; }
+    .event-dates { font-size: 0.75rem; color: #607B88; margin-top: 0.1rem; }
 
     .event-badge {
       font-size: 0.65rem;
@@ -147,17 +171,17 @@
       border-radius: 999px;
       flex-shrink: 0;
     }
-    .holiday      .event-badge { background: #c6f6d5; color: #276749; }
-    .inset        .event-badge { background: #feebc8; color: #9c4221; }
-    .bank-holiday .event-badge { background: #bee3f8; color: #2b6cb0; }
-    .closure      .event-badge { background: #fed7d7; color: #9b2c2c; }
+    .holiday      .event-badge { background: #ddeafd; color: #3a6bb5; }
+    .inset        .event-badge { background: #dde3e7; color: #4a5f6b; }
+    .bank-holiday .event-badge { background: #dde0f5; color: #4455B7; }
+    .closure      .event-badge { background: #cceaf9; color: #1a7aaa; }
 
     .today-marker {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       font-size: 0.72rem;
-      color: #9f7aea;
+      color: #518FF5;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -168,8 +192,33 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: #d6bcfa;
+      background: #b8cdf9;
     }
+
+    details.past-events { margin-bottom: 0.35rem; }
+    details.past-events summary {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #607B88;
+      cursor: pointer;
+      padding: 0.35rem 0.5rem;
+      border-radius: 6px;
+      list-style: none;
+      user-select: none;
+    }
+    details.past-events summary::-webkit-details-marker { display: none; }
+    details.past-events summary::before {
+      content: '▶';
+      font-size: 0.6rem;
+      transition: transform 0.2s;
+    }
+    details.past-events[open] summary::before { transform: rotate(90deg); }
+    details.past-events summary:hover { background: #dde0f5; color: #4455B7; }
 
     footer {
       text-align: center;
@@ -184,59 +233,31 @@
 <header>
   <h1>Summercourt Academy</h1>
   <div class="subtitle" id="today-display"></div>
-  <div class="term-badge" id="term-label">Loading…</div>
+  <div class="term-badge" id="term-label"> </div>
 </header>
 
-<div class="countdowns" id="countdowns">
-  <div class="section-title" style="grid-column:1/-1;">Coming up</div>
-</div>
-
-<div class="list-section" id="list-section">
-  <div class="section-title">2025–26 Academic Year</div>
-</div>
+<div id="countdowns-wrap"></div>
+<div id="list-wrap"></div>
 
 <footer>
-  Data sourced from <a href="https://www.summercourtacademy.org/calendar" target="_blank" style="color:#a0aec0;">summercourtacademy.org/calendar</a>
+  Data sourced live from <a href="https://www.summercourtacademy.org/calendar" target="_blank" style="color:#a0aec0;">summercourtacademy.org/calendar</a>
 </footer>
 
 <script>
-// ── Event data ─────────────────────────────────────────────────────────────
-const EVENTS = [
-  // Holidays
-  { name: 'Summer Holidays 2025',   start: '2025-07-24', end: '2025-09-02', type: 'holiday',      term: 'Summer 2025' },
-  { name: 'Autumn Half Term',       start: '2025-10-25', end: '2025-11-02', type: 'holiday',      term: 'Autumn 2025' },
-  { name: 'Christmas Holiday',      start: '2025-12-20', end: '2026-01-04', type: 'holiday',      term: 'Autumn 2025' },
-  { name: 'Spring Half Term',       start: '2026-02-14', end: '2026-02-22', type: 'holiday',      term: 'Spring 2026' },
-  { name: 'Good Friday',            start: '2026-04-03', end: '2026-04-03', type: 'bank-holiday', term: 'Spring 2026' },
-  { name: 'Easter Holiday',         start: '2026-04-04', end: '2026-04-19', type: 'holiday',      term: 'Spring 2026' },
-  { name: 'May Day Bank Holiday',   start: '2026-05-04', end: '2026-05-04', type: 'bank-holiday', term: 'Summer 2026' },
-  { name: 'May Half Term',          start: '2026-05-23', end: '2026-05-31', type: 'holiday',      term: 'Summer 2026' },
-  { name: 'Summer Holidays 2026',   start: '2026-07-24', end: '2026-08-31', type: 'holiday',      term: 'Summer 2026' },
+// ── Constants ────────────────────────────────────────────────────────────────
+const PROXY = 'https://api.allorigins.win/raw?url=';
+const FEED  = 'https://www.summercourtacademy.org/events';
 
-  // Inset days
-  { name: 'Inset Day',              start: '2025-09-03', end: '2025-09-03', type: 'inset',        term: 'Autumn 2025', note: 'Start of Autumn Term' },
-  { name: 'Inset Day',              start: '2025-10-24', end: '2025-10-24', type: 'inset',        term: 'Autumn 2025', note: 'Day before Half Term' },
-  { name: 'Inset Day',              start: '2025-11-03', end: '2025-11-03', type: 'inset',        term: 'Autumn 2025', note: 'Day after Half Term' },
-  { name: 'Inset Day',              start: '2026-01-05', end: '2026-01-05', type: 'inset',        term: 'Spring 2026', note: 'Start of Spring Term' },
-  { name: 'Inset Day',              start: '2026-05-22', end: '2026-05-22', type: 'inset',        term: 'Summer 2026', note: 'Day before May Half Term' },
+// Keywords used to identify relevant events from the full school calendar
+const HOLIDAY_KEYWORDS   = ['holiday', 'holidays', 'half term', 'half-term', 'easter', 'christmas', 'summer'];
+const INSET_KEYWORDS     = ['inset'];
+const BANK_HOL_KEYWORDS  = ['bank holiday', 'bank hol', 'good friday', 'may day'];
+const CLOSURE_KEYWORDS   = ['fair day', 'school closed', 'closed'];
 
-  // Other closures
-  { name: 'Summercourt Fair Day',   start: '2025-09-25', end: '2025-09-25', type: 'closure',      term: 'Autumn 2025' },
-];
-
-// ── Term definitions ────────────────────────────────────────────────────────
-const TERMS = [
-  { name: 'Autumn Term 2025',  start: '2025-09-04', end: '2025-12-19' },
-  { name: 'Spring Term 2026',  start: '2026-01-06', end: '2026-04-01' },
-  { name: 'Summer Term 2026',  start: '2026-04-20', end: '2026-07-23' },
-];
-
-// ── Term groups for list display ────────────────────────────────────────────
-const TERM_ORDER = ['Summer 2025', 'Autumn 2025', 'Spring 2026', 'Summer 2026'];
-
-// ── Helpers ─────────────────────────────────────────────────────────────────
+// ── Date helpers ─────────────────────────────────────────────────────────────
 function parseDate(str) {
-  const [y, m, d] = str.split('-').map(Number);
+  // Handles "2026-04-03" and "2026-04-03T00:00:00"
+  const [y, m, d] = str.slice(0, 10).split('-').map(Number);
   return new Date(y, m - 1, d);
 }
 
@@ -267,148 +288,284 @@ function formatDateRangeWithDay(start, end) {
   return formatDateWithDay(start) + ' – ' + formatDateWithDay(end);
 }
 
+// ── Academic year helpers ────────────────────────────────────────────────────
+function currentAcademicStartYear() {
+  const n = new Date();
+  return n.getMonth() >= 8 ? n.getFullYear() : n.getFullYear() - 1;
+}
+
+function yearLabel(y) {
+  return `${y}–${String(y + 1).slice(2)}`;
+}
+
+function yearRange(y) {
+  return { start: `${y}-09-01`, end: `${y + 1}-08-31` };
+}
+
+// ── Event categorisation ─────────────────────────────────────────────────────
+function categorise(title) {
+  const t = title.toLowerCase();
+  if (INSET_KEYWORDS.some(k => t.includes(k)))    return 'inset';
+  if (BANK_HOL_KEYWORDS.some(k => t.includes(k))) return 'bank-holiday';
+  if (HOLIDAY_KEYWORDS.some(k => t.includes(k)))  return 'holiday';
+  if (CLOSURE_KEYWORDS.some(k => t.includes(k)))  return 'closure';
+  return null; // Not a holiday/closure — skip
+}
+
 function typeLabel(type) {
-  if (type === 'holiday') return 'Holiday';
-  if (type === 'inset') return 'Inset Day';
+  if (type === 'holiday')      return 'Holiday';
+  if (type === 'inset')        return 'Inset Day';
   if (type === 'bank-holiday') return 'Bank Holiday';
-  if (type === 'closure') return 'Closure';
+  if (type === 'closure')      return 'Closure';
   return type;
 }
 
-// ── Header ──────────────────────────────────────────────────────────────────
+// ── Term grouping ─────────────────────────────────────────────────────────────
+function getTerm(startYear, dateStr) {
+  const d = parseDate(dateStr);
+  const m = d.getMonth() + 1; // 1-12
+  const y = d.getFullYear();
+  if (y === startYear && m >= 9)             return `Autumn ${startYear}`;
+  if (y === startYear + 1 && m <= 4)         return `Spring ${startYear + 1}`;
+  return `Summer ${startYear + 1}`;
+}
+
+const termOrder = y => [`Autumn ${y}`, `Spring ${y + 1}`, `Summer ${y + 1}`];
+
+// ── Fetch ────────────────────────────────────────────────────────────────────
+async function fetchEvents(startYear) {
+  const { start, end } = yearRange(startYear);
+  const url = `${FEED}?start=${start}&end=${end}`;
+  const res = await fetch(PROXY + encodeURIComponent(url));
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const raw = await res.json();
+  // raw is an array of FullCalendar event objects
+  return raw
+    .map(e => {
+      const type = categorise(e.title);
+      if (!type) return null;
+      // FullCalendar end dates are exclusive — subtract one day for display
+      const endDate = e.end ? e.end.slice(0, 10) : e.start.slice(0, 10);
+      const endDisplay = e.allDay && e.end
+        ? (() => {
+            const d = parseDate(endDate);
+            d.setDate(d.getDate() - 1);
+            return d.toISOString().slice(0, 10);
+          })()
+        : endDate;
+      return {
+        name:  e.title,
+        start: e.start.slice(0, 10),
+        end:   endDisplay,
+        type,
+        term:  getTerm(startYear, e.start.slice(0, 10)),
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => parseDate(a.start) - parseDate(b.start));
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
 const NOW = today();
+
+function renderHeader(startYear, events) {
+  // Term / holiday label
+  let label = yearLabel(startYear) + ' Academic Year';
+  for (const t of termOrder(startYear)) {
+    // crude term date ranges — just label the current period
+  }
+  for (const e of events) {
+    if (e.type === 'holiday' || e.type === 'bank-holiday') {
+      if (NOW >= parseDate(e.start) && NOW <= parseDate(e.end)) {
+        label = e.name;
+        break;
+      }
+    }
+  }
+  // Check if in an active inset/closure day
+  for (const e of events) {
+    if (NOW >= parseDate(e.start) && NOW <= parseDate(e.end) && e.type !== 'holiday') {
+      label = e.name;
+      break;
+    }
+  }
+  document.getElementById('term-label').textContent = label;
+}
+
+function renderCountdowns(events) {
+  const wrap = document.getElementById('countdowns-wrap');
+  wrap.innerHTML = '';
+
+  const grid = document.createElement('div');
+  grid.className = 'countdowns';
+
+  const titleEl = document.createElement('div');
+  titleEl.className = 'section-title';
+  titleEl.style.gridColumn = '1/-1';
+  titleEl.textContent = 'Coming up';
+  grid.appendChild(titleEl);
+
+  const upcoming = [];
+  for (const e of events) {
+    const s = parseDate(e.start);
+    const en = parseDate(e.end);
+    if (en < NOW) continue;
+    if (s <= NOW) {
+      upcoming.push({ ...e, status: 'ongoing', daysLeft: daysBetween(NOW, en) });
+    } else {
+      upcoming.push({ ...e, status: 'upcoming', daysUntil: daysBetween(NOW, s) });
+    }
+    if (upcoming.length >= 5) break;
+  }
+
+  if (!upcoming.length) {
+    titleEl.textContent = 'No upcoming events this year';
+    wrap.appendChild(grid);
+    return;
+  }
+
+  for (const e of upcoming) {
+    const cls = e.status === 'ongoing' ? 'ongoing' : e.type;
+    const card = document.createElement('div');
+    card.className = `countdown-card ${cls}`;
+
+    let countdownHtml;
+    if (e.status === 'ongoing') {
+      countdownHtml = `<div class="card-countdown">${e.daysLeft}</div>
+                       <div class="card-unit">day${e.daysLeft !== 1 ? 's' : ''} remaining</div>`;
+    } else if (e.daysUntil === 0) {
+      countdownHtml = `<div class="card-countdown">Today</div>`;
+    } else if (e.daysUntil === 1) {
+      countdownHtml = `<div class="card-countdown">Tomorrow</div>`;
+    } else {
+      countdownHtml = `<div class="card-countdown">${e.daysUntil}</div>
+                       <div class="card-unit">days away</div>`;
+    }
+
+    card.innerHTML = `
+      <div class="card-label">${e.status === 'ongoing' ? 'Ongoing' : typeLabel(e.type)}</div>
+      <div class="card-name">${e.name}</div>
+      <div class="card-date">${formatDateRangeWithDay(e.start, e.end)}</div>
+      ${countdownHtml}
+    `;
+    grid.appendChild(card);
+  }
+  wrap.appendChild(grid);
+}
+
+function renderList(startYear, events) {
+  const wrap = document.getElementById('list-wrap');
+  wrap.innerHTML = '';
+
+  const section = document.createElement('div');
+  section.className = 'list-section';
+
+  const title = document.createElement('div');
+  title.className = 'section-title';
+  title.textContent = `${yearLabel(startYear)} Academic Year`;
+  section.appendChild(title);
+
+  for (const termName of termOrder(startYear)) {
+    const termEvents = events.filter(e => e.term === termName);
+    if (!termEvents.length) continue;
+
+    const group = document.createElement('div');
+    group.className = 'term-group';
+
+    const heading = document.createElement('div');
+    heading.className = 'term-heading';
+    heading.textContent = termName;
+    group.appendChild(heading);
+
+    const pastEvents   = termEvents.filter(e => parseDate(e.end) < NOW);
+    const futureEvents = termEvents.filter(e => parseDate(e.end) >= NOW);
+
+    // Collapsed past events
+    if (pastEvents.length) {
+      const details = document.createElement('details');
+      details.className = 'past-events';
+      const summary = document.createElement('summary');
+      summary.textContent = `${pastEvents.length} past event${pastEvents.length !== 1 ? 's' : ''}`;
+      details.appendChild(summary);
+      for (const e of pastEvents) {
+        details.appendChild(makeRow(e, true));
+      }
+      group.appendChild(details);
+    }
+
+    // Today marker
+    if (pastEvents.length && futureEvents.length) {
+      const marker = document.createElement('div');
+      marker.className = 'today-marker';
+      marker.textContent = 'Today';
+      group.appendChild(marker);
+    }
+
+    // Upcoming events
+    for (const e of futureEvents) {
+      group.appendChild(makeRow(e, false));
+    }
+
+    section.appendChild(group);
+  }
+  wrap.appendChild(section);
+}
+
+function makeRow(e, isPast) {
+  const s = parseDate(e.start);
+  const en = parseDate(e.end);
+  const isOngoing = !isPast && s <= NOW && en >= NOW;
+
+  const row = document.createElement('div');
+  row.className = `event-row ${e.type}${isPast ? ' past' : ''}`;
+  const ongoingTag = isOngoing
+    ? ' <span style="color:#2299dd;font-size:0.7rem;font-weight:700;">● now</span>'
+    : '';
+  row.innerHTML = `
+    <div class="event-dot"></div>
+    <div class="event-info">
+      <div class="event-name">${e.name}${ongoingTag}</div>
+      <div class="event-dates">${formatDateRange(e.start, e.end)}</div>
+    </div>
+    <div class="event-badge">${typeLabel(e.type)}</div>
+  `;
+  return row;
+}
+
+function showStatus(msg, isError = false) {
+  document.getElementById('countdowns-wrap').innerHTML = '';
+  document.getElementById('list-wrap').innerHTML =
+    `<div class="status-msg${isError ? ' error' : ''}">${msg}</div>`;
+}
+
+// ── Bootstrap ─────────────────────────────────────────────────────────────────
+const currentYear = currentAcademicStartYear();
 document.getElementById('today-display').textContent =
   NOW.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 
-// Current term label
-let termLabel = 'Outside Term';
-for (const t of TERMS) {
-  if (NOW >= parseDate(t.start) && NOW <= parseDate(t.end)) {
-    termLabel = t.name;
-    break;
-  }
-}
-// Check if in a holiday
-for (const e of EVENTS) {
-  if ((e.type === 'holiday' || e.type === 'bank-holiday') &&
-      NOW >= parseDate(e.start) && NOW <= parseDate(e.end)) {
-    termLabel = e.name;
-    break;
-  }
-}
-document.getElementById('term-label').textContent = termLabel;
-
-// ── Countdown cards ──────────────────────────────────────────────────────────
-const countdownsEl = document.getElementById('countdowns');
-
-// Sort events by start date
-const sorted = [...EVENTS].sort((a, b) => parseDate(a.start) - parseDate(b.start));
-
-// Find ongoing or upcoming events
-const upcoming = [];
-for (const e of sorted) {
-  const s = parseDate(e.start);
-  const en = parseDate(e.end);
-  if (en < NOW) continue; // fully past
-
-  if (s <= NOW && en >= NOW) {
-    // Ongoing
-    upcoming.push({ ...e, status: 'ongoing', daysLeft: daysBetween(NOW, en) });
-  } else {
-    // Future
-    upcoming.push({ ...e, status: 'upcoming', daysUntil: daysBetween(NOW, s) });
-  }
-  if (upcoming.length >= 5) break;
-}
-
-for (const e of upcoming) {
-  const card = document.createElement('div');
-  const cls = e.status === 'ongoing' ? 'ongoing' : e.type;
-  card.className = `countdown-card ${cls}`;
-
-  let countdownHtml;
-  if (e.status === 'ongoing') {
-    countdownHtml = `<div class="card-countdown">${e.daysLeft}</div>
-                     <div class="card-unit">day${e.daysLeft !== 1 ? 's' : ''} remaining</div>`;
-  } else if (e.daysUntil === 0) {
-    countdownHtml = `<div class="card-countdown">Today</div>`;
-  } else if (e.daysUntil === 1) {
-    countdownHtml = `<div class="card-countdown">Tomorrow</div>`;
-  } else {
-    countdownHtml = `<div class="card-countdown">${e.daysUntil}</div>
-                     <div class="card-unit">days away</div>`;
-  }
-
-  const note = e.note ? ` — ${e.note}` : '';
-  card.innerHTML = `
-    <div class="card-label">${e.status === 'ongoing' ? 'Ongoing' : typeLabel(e.type)}</div>
-    <div class="card-name">${e.name}${note}</div>
-    <div class="card-date">${formatDateRangeWithDay(e.start, e.end)}</div>
-    ${countdownHtml}
-  `;
-  countdownsEl.appendChild(card);
-}
-
-if (upcoming.length === 0) {
-  const msg = document.createElement('p');
-  msg.style.cssText = 'color:#718096;font-size:0.875rem;';
-  msg.textContent = 'No upcoming events found.';
-  countdownsEl.appendChild(msg);
-}
-
-// ── Full list ────────────────────────────────────────────────────────────────
-const listSection = document.getElementById('list-section');
-
-for (const termName of TERM_ORDER) {
-  const termEvents = sorted.filter(e => e.term === termName);
-  if (!termEvents.length) continue;
-
-  const group = document.createElement('div');
-  group.className = 'term-group';
-
-  const heading = document.createElement('div');
-  heading.className = 'term-heading';
-  heading.textContent = termName;
-  group.appendChild(heading);
-
-  let todayMarkerAdded = false;
-
-  for (const e of termEvents) {
-    const s = parseDate(e.start);
-    const en = parseDate(e.end);
-    const isPast = en < NOW;
-    const isOngoing = s <= NOW && en >= NOW;
-
-    // Insert "today" marker between past and future
-    if (!todayMarkerAdded && !isPast) {
-      if (termEvents.some(ev => parseDate(ev.end) < NOW)) {
-        const marker = document.createElement('div');
-        marker.className = 'today-marker';
-        marker.textContent = 'Today';
-        group.appendChild(marker);
-      }
-      todayMarkerAdded = true;
+async function load(startYear) {
+  document.getElementById('term-label').textContent = ' ';
+  showStatus('<span class="spinner"></span> Loading calendar…');
+  try {
+    const events = await fetchEvents(startYear);
+    if (!events.length) {
+      showStatus('No holidays or inset days found for this year — the school may not have published them yet.');
+      return;
     }
-
-    const row = document.createElement('div');
-    row.className = `event-row ${e.type}${isPast ? ' past' : ''}`;
-
-    const note = e.note ? ` <span style="color:#a0aec0;font-weight:400;">(${e.note})</span>` : '';
-    const ongoingTag = isOngoing ? ' <span style="color:#805ad5;font-size:0.7rem;font-weight:700;">● now</span>' : '';
-
-    row.innerHTML = `
-      <div class="event-dot"></div>
-      <div class="event-info">
-        <div class="event-name">${e.name}${note}${ongoingTag}</div>
-        <div class="event-dates">${formatDateRange(e.start, e.end)}</div>
-      </div>
-      <div class="event-badge">${typeLabel(e.type)}</div>
-    `;
-    group.appendChild(row);
+    renderHeader(startYear, events);
+    renderCountdowns(events);
+    renderList(startYear, events);
+  } catch (err) {
+    showStatus(
+      `Could not load calendar data. Check your internet connection or visit ` +
+      `<a href="https://www.summercourtacademy.org/calendar" target="_blank">summercourtacademy.org/calendar</a> directly.`,
+      true
+    );
+    console.error(err);
   }
-
-  listSection.appendChild(group);
 }
+
+load(currentYear);
 </script>
 </body>
 </html>
